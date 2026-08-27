@@ -2,7 +2,7 @@
   "name": "p5experiments",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.mjs",
   "directories": {
     "doc": "docs"
   },
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/Kimajita/p5-Experiments.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "kimajita",
   "license": "ISC",
   "type": "module",
   "bugs": {
