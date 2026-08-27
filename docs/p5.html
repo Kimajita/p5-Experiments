@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>first canvas</title>
+        <link rel="icon" href="#"/>
+
+        <style>
+            .hide { display: none; }
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                width: 100vw; max-width: 100%;
+                height: 100vh;  max-height: 100%;
+            }
+            #canvas {
+                background: black;
+            }
+
+        </style>
+
+        <script type="importmap">
+            {
+                "imports": {
+                    "p5": "https://cdn.jsdelivr.net/npm/p5@2.3.1/lib/p5.min.js",
+                    "p5.sound": "https://cdn.jsdelivr.net/npm/p5.sound@0.4.1/dist/p5.sound.min.js"
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="canvas">
+
+        </div>
+        <script type="module" src="./testing.js" async></script>
+    </body>
+</html>
