@@ -57,6 +57,22 @@ vec2 truchet(vec2 st, float index) {
     return st;
 }
 
+const float lineThickness = 0.005;
+float line(vec2 pos1, vec2 pos2, vec2 st) {
+    float a = abs(distance(pos1, st));
+    float b = abs(distance(pos2, st));
+    float c = abs(distance(pos1, pos2));
+
+    if (a >= c || b >= c) { return 0.0; }
+
+    float p = (a + b + c) * 0.5;
+    float h = 2.0 / c * sqrt(p * (p - a) * (p - b) * (p - c));
+
+    float line = mix(1.0, 0.0, smoothstep(0.5 * lineThickness, 1.5 * lineThickness, h));
+
+    return line;
+}
+
 void main() {
     vec2 uv0 = vUV;
     vec2 uv = vUV * 2.0 - 1.0;
@@ -73,18 +89,9 @@ void main() {
     float radius = length(st * 2.0);
     vec3 rainbow = hsb(vec3(angle / (pi * 2.0) + 0.5 , radius, 1.0));
 
-    vec2 st1 = uv;
+    vec4 line = vec4(max(
+            line(vec2(0.0, 1.0), vec2(1.0, 0.5), st),
+            line(vec2(0.0, 0.0), vec2(0.5, 0.6), st)));
 
-
-
-    st1 *= 5.0;
-    vec2 ipos = floor(st1);
-    vec2 fpos = fract(st1);
-
-    vec3 tile = vec3(fpos, 1.0);
-
-
-    tile.rgb += volume;
-
-    gl_FragColor = vec4(tile, 1.0);
+    gl_FragColor = vec4(line);
 }
